@@ -1,6 +1,6 @@
 <?php
 // src/Command/CreateUserCommand.php
-namespace App\Command;
+namespace App\Command\Bme;
 
 use PharIo\Version\Exception;
 use Pimcore\File;
