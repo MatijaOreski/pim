@@ -1,0 +1,73 @@
+<html>
+
+<head>
+
+
+
+    <style>
+
+        select{
+            margin-top: 10px;
+        }
+
+        #language{
+            width: 100px;
+        }
+
+        #manufacturer{
+            height: 300px;
+        }
+
+        #category{
+            height: 300px;
+        }
+
+        #container{
+            display: flex;
+        }
+
+
+        #innerContainer{
+            margin: 20px;
+        }
+
+        button{
+            margin:20px;
+        }
+
+        option{
+            padding:10px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<h1>
+    MTS Pimcore Export
+</h1>
+
+<hr>
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+    </tr>
+    {% for n in name %}
+        <tr>
+            <td>nekaj</td>
+            <td>{{ n.name }}</td>
+        </tr>
+    {% endfor %}
+</table>
+
+
+
+<hr>
+
+</body>
+
+
+</html>

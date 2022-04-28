@@ -1,0 +1,1 @@
+Kopiere dh und dh.pub aus Keepass in dieses Verzeichnis.

@@ -1,0 +1,13 @@
+# app/config/installer.yml
+
+pimcore_install:
+    parameters:
+        database_credentials:
+            user:                 pimcore
+            password:             B4rjasf9dajfKd
+            dbname:               pimcore
+            
+            # env variables can be directly read with the %env() syntax
+            # see https://symfony.com/blog/new-in-symfony-3-2-runtime-environment-variables
+            host:                 10.147.129.10
+            port:                 3306

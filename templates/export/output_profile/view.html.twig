@@ -1,0 +1,31 @@
+<html>
+
+<head>
+
+</head>
+
+<body>
+
+
+<form method="post" action="/OutputProfile">
+
+    <h1>Export by output profiles</h1>
+
+    <hr>
+
+    <select style="padding-inline: 50px;margin-block: 50px;margin-left: 20px" name="selectedOutputProfile">
+        {% for profile in profiles %}
+            <option value="{{ profile.getId() }}">{{ profile.getKey() }}</option>
+        {% endfor %}
+    </select>
+
+    <button type="submit">Export</button>
+
+</form>
+
+<hr>
+
+
+</body>
+
+</html>

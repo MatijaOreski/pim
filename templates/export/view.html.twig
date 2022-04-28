@@ -1,0 +1,117 @@
+<html>
+
+<head>
+
+
+
+    <style>
+
+       select{
+           margin-top: 10px;
+       }
+
+        #language{
+            width: 100px;
+        }
+
+        #manufacturer{
+            height: 300px;
+        }
+
+        #category{
+            height: 300px;
+        }
+
+        #container{
+            display: flex;
+        }
+
+
+        #innerContainer{
+            margin: 20px;
+        }
+
+        button{
+            margin:20px;
+        }
+
+        option{
+            padding:10px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<h1>
+    MTS Pimcore Export
+</h1>
+
+<hr>
+
+<form method="post" action="/makeExport" target="_self">
+    <div id="container">
+        <div id="innerContainer">
+            <label for="language">Country:</label>
+            <br>
+
+            <select  name="language" id="language">
+                {% for lang in allLanguages %}
+                    <option value="{{ lang }}">{{ lang }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div id="innerContainer">
+            <label for="manufacturer">Manufacturer:</label>
+            <br>
+
+            <select multiple name="manufacturer[]" id="manufacturer">
+                {% for manu in allManufacturers %}
+                    <option value="{{ manu.id }}">{{ manu.name }}</option>
+                {% endfor %}
+
+            </select>
+        </div>
+
+
+        <div id="innerContainer">
+            <label for="category">Category:</label>
+            <br>
+
+            <select multiple name="category[]" id="category">
+                {% for cate in allCategories %}
+                    <option value="{{ cate.id }}">{{ cate.categoryName }}</option>
+                {% endfor %}
+
+            </select>
+        </div>
+        
+
+        <div id="innerContainer">
+            <label for="exportformat">Export format:</label>
+            <br>
+            <select name="exportformat" id="exportformat">
+
+                <option value="csv">CSV</option>
+                <option value="json">JSON</option>
+
+
+            </select>
+        </div>
+
+
+    </div>
+
+    <button type="submit">Export</button>
+</form>
+
+
+
+<hr>
+
+</body>
+
+
+</html>

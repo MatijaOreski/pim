@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div>
+    <h1>Import products</h1>
+
+    <div class="nekidiv">
+
+        <label>Name:
+            <input type="file" id="csv" accept=".csv">
+        </label>
+        <label>Category Name:
+            <input type="text" id="category_number" name="category_number">
+        </label>
+        <input type="hidden" id="csv_hidden">
+        <input type="button" id="upload" value="Upload">
+        <div class="csv"></div>
+
+        <p>{{ csv }}</p>
+
+    </div>
+
+</div>
+
+<script>
+    $(document).ready(function(){
+        $('#upload').click(function(){
+
+            let csv = $('#csv');
+            let csvFile = csv[0].files[0];
+            let ext = csv.val().split(".").pop().toLowerCase();
+
+            if($.inArray(ext, ["csv"]) === -1){
+                alert('upload csv');
+                return false;
+            }
+            if(csvFile != undefined){
+                reader = new FileReader();
+                reader.onload = function(e){
+
+                    //csvResult = e.target.result.split(/\r|\n|\r\n/);
+                    csvResult = e.target.result;
+                    $('.csv').append(csvResult);
+                }
+                reader.readAsText(csvFile);
+
+
+                $.post("/importProducts",{
+                    category_number:$("#category_number").val(),
+                    csv:csvResult
+                }).done(function(data){
+                    $('.nekidiv').html(data);
+
+                });
+            }
+        });
+    });
+
+
+    /*$(document).ready(function(){
+        $('#upload').click(function (){
+            $.post("/test",{
+                category_number:$("#category_number").val(),
+                csv:lista
+            }).done(function(data){
+                $('.nekidiv').html(data);
+            });
+        })
+    })*/
+
+
+
+</script>
+
+</body>
+</html>
+
